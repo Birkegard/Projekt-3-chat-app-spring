@@ -1,0 +1,84 @@
+ENTITETER
+- User
+- Profile
+- Message
+- Comments
+- Tags
+
+ATTRIBUT
+User
+- Username
+- Password
+
+Profile
+- ProfilePicture
+- Biography
+
+Message
+- Text
+- Timestamp
+
+Comments
+- Text
+- Timestamp
+
+Tags
+- TagName
+
+RELATIONER
+User - Message (1-*)
+User - Comments (1-*)
+User - Profile (1-1)
+Message - Comments (1-*)
+Message - Tags (-)
+
+KRAV
+Användare med meddelanden: Ja
+Användare med kommentarer: Ja
+Användare med profilbild och biografi: Ja
+Meddelanden har kommentarer och taggar: Ja
+
+CREATE TABLE users (
+    user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(50) NOT NULL UNIQUE,
+    password VARCHAR(50) NOT NULL
+);
+
+CREATE TABLE profiles (
+    profile_id BIG INT AUTO_INCREMENT PRIMARY KEY,
+    profile_picture BLOB,
+    biography VARCHAR(300),
+    user_id BIGINT,
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE messages (
+    message_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(300) NOT NULL,
+    time_stamp DATE,
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+);
+
+CREATE TABLE comments(
+    comment_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    text VARCHAR(200) NOT NULL,
+    time_stamp DATE,
+    message_id BIGINT NOT NULL,
+    user_id BIGINT NOT NULL,
+    FOREIGN KEY (message_id) REFERENCES messages (message_id)
+    FOREIGN KEY (user_id) REFERENCES users (user_id)
+    );
+
+CREATE TABLE tags(
+    tag_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+    tag_name VARCHAR(50) NOT NULL UNIQUE
+    );
+
+CREATE TABLE messages_tags(
+    comment_id BIGINT,
+    tag_id BIGINT,
+    PRIMARY KEY(message_id, tags_id),
+    FOREIGN KEY(message_id) REFERENCES messages(message_id),
+    FOREIGN KEY(tag_id) REFERENCES tags(tag_id)
+    );
