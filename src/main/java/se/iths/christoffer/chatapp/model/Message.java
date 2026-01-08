@@ -1,12 +1,28 @@
-package se.sprinto.hakan.chatapp.model;
+package se.iths.christoffer.chatapp.model;
+
+import jakarta.persistence.*;
+import org.apache.logging.log4j.util.Lazy;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.Fetch;
 
 import java.time.LocalDateTime;
-
+@Entity
+@Table (name = "messages")
 public class Message {
-
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    @Column(name = "message_id")
     private Long id;
+
+    @ManyToOne ()
+    @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    @Column (nullable = false)
     private String text;
+
+    @CreationTimestamp
+    @Column (name = "time_stamp")
     private LocalDateTime timestamp;
 
     public Message(User user, String text, LocalDateTime timestamp) {

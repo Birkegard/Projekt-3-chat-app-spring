@@ -1,8 +1,9 @@
-package se.sprinto.hakan.chatapp.service;
+package se.iths.christoffer.chatapp.service;
+
 
 import org.springframework.stereotype.Service;
-import se.sprinto.hakan.chatapp.model.User;
-import se.sprinto.hakan.chatapp.repository.UserRepository;
+import se.iths.christoffer.chatapp.model.User;
+import se.iths.christoffer.chatapp.repository.UserRepository;
 
 @Service
 public class UserService {

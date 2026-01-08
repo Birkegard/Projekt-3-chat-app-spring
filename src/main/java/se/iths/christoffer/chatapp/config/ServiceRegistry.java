@@ -1,9 +1,9 @@
-package se.sprinto.hakan.chatapp.config;
+package se.iths.christoffer.chatapp.config;
 
 
 import org.springframework.stereotype.Component;
-import se.sprinto.hakan.chatapp.service.UserService;
-import se.sprinto.hakan.chatapp.service.MessageService;
+import se.iths.christoffer.chatapp.service.UserService;
+import se.iths.christoffer.chatapp.service.MessageService;
 
 @Component
 public class ServiceRegistry {

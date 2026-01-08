@@ -1,6 +1,6 @@
-package se.sprinto.hakan.chatapp.dao;
+package se.iths.christoffer.chatapp.dao;
 
-import se.sprinto.hakan.chatapp.model.User;
+import se.iths.christoffer.chatapp.model.User;
 
 public interface UserDAO {
     User login(String username, String password);

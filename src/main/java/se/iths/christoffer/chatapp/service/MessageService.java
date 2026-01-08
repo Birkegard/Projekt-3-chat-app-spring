@@ -1,8 +1,8 @@
-package se.sprinto.hakan.chatapp.service;
+package se.iths.christoffer.chatapp.service;
 
 import org.springframework.stereotype.Service;
-import se.sprinto.hakan.chatapp.model.Message;
-import se.sprinto.hakan.chatapp.repository.MessageRepository;
+import se.iths.christoffer.chatapp.model.Message;
+import se.iths.christoffer.chatapp.repository.MessageRepository;
 
 import java.util.List;
 
